@@ -54,24 +54,23 @@ export default function Profile() {
       </h1>
       <form className="flex flex-col gap-4" >
         <input onChange={(e)=>setFile(e.target.files[0])} type="file" ref={fileRef} hidden accept='image/*' />
-        <img onClick={()=>fileRef.current.click()} 
+        <img 
+        onClick={()=>fileRef.current.click()} 
         src={currentUser.avatar} 
         alt="profile" 
-        className="rounded-full h-24 w-24 object-cover 
-        cursor-pointer self-center mt-2" 
+        className="rounded-full h-24 w-24 object-cover cursor-pointer self-center mt-2" 
         />
         <p className="text-sm self-center">
           {fileUploadError ? (
-          <span className="text-red-700">Error Image Upload</span>
-          ) : filePerc > 0 && filePerc < 100 ? (
-            <span className="text-slate-700">
-              {'Uploading ${filePerc}%'}
+          <span className="text-red-700">
+            Error Image Upload (image must be less than 2 mb)
             </span>
-          
+          ) : filePerc > 0 && filePerc < 100 ? (
+            <span className="text-slate-700">{'Uploading ${filePerc}%'}</span>
           ) : filePerc === 100 ? (
             <span className="text-green-700">Image Successfully Uploaded!</span>
             )  : (
-            " "
+            ' '
           )}
         </p>
         <input type="text" placeholder="username" id="username" className="border p-3 rounded-lg" />
