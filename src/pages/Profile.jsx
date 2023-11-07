@@ -35,6 +35,7 @@ export default function Profile() {
   //allow write: if
   //request.resource.size < 2 * 1024 * 1024 &&
   //request.resource.contentType.matches('image/.*')
+
   useEffect(() => {
     if(file) {
       handleFileUpload(file);
@@ -55,7 +56,6 @@ export default function Profile() {
      setFilePerc(Math.round(progress));
    },
    (error) => {
-
       setFileUploadError(true);
     },
     () => {
@@ -75,7 +75,6 @@ e.preventDefault();
 try {
   dispatch(updateUserStart());
   const res = await fetch('/api/user/update/$ {currentUser._id}', {
-
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -122,7 +121,9 @@ const handleSignOut = async () => {
     }
     dispatch(deleteUserSuccess(data));
   } catch (error) {
+
     dispatch(deleteUserFailure(data.message));
+
   }
 
 }
